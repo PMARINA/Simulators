@@ -17,3 +17,5 @@ setSpeed(int);    // sets the speed NOTE: the higher the number the slower the b
 
 stop();           // pauses the bot for three seconds
 
+setMoveDistance(int) // sets the amount of distance moved in each interval (unit thingy ?) 
+
