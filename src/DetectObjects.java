@@ -23,11 +23,13 @@ import java.io.IOException;
 import java.util.Random;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class DetectObjects extends JPanel {	
 	public String line;		
 	public JButton refresh;
+	public int distance=50;
 	public int stuff=0,k=0,obstacles=0;
 	public int[] array,arguments;
 	public boolean f=false,b=false,left=false,win=false;
@@ -108,6 +110,12 @@ public class DetectObjects extends JPanel {
 			   
 			   check();
 		   }
+		   else if(line.contains("setMoveDistance")){
+				array[stuff]=6;
+				arguments[stuff]=Integer.parseInt(line.substring(16,line.length()-2));
+			//   System.out.println(line.substring(16, line.length()-2));
+				check();
+		   }
 		   else if(line.contains("//")==true){
 			   
 			   System.out.println("COMMENT: "+ line.substring(2));
@@ -131,7 +139,6 @@ public class DetectObjects extends JPanel {
 	}
 
 	public void check(){
-		
 		switch(array[k]){					// switch on the number of inside array[k]
 			case 0:									// 0 is stop
 				new java.util.Timer().schedule( 	// waits 1 second 
@@ -225,6 +232,15 @@ public class DetectObjects extends JPanel {
         			check();
         		}
 				break;
+			case 6: 
+				
+				System.out.println("Case 6 - set Distance");
+				distance = arguments[k];
+				if(k<array.length-1){
+        			k++;
+        			check();
+        		}
+			
 		}
 		
 	}
@@ -235,11 +251,12 @@ public class DetectObjects extends JPanel {
 		int ax = 480,ay=0,bx=480,by=100;
 		boolean dead=false;
 		
+		
 		graphics.setColor(Color.BLACK);
 		graphics.drawLine(ax,ay,bx,by);
 		
 	
-		int m =0;			
+		int m =0;							//keeps track of repaints		
 		graphics.setColor(Color.GREEN);
 		graphics.fillRect(0,460,100,20);
 		graphics.setColor(Color.RED);
@@ -304,9 +321,10 @@ public class DetectObjects extends JPanel {
 		
 		repaint();
 		
-		if(x+25<=bx+50 && x+25>=ax-50 && y<=ay+50){
-			System.out.println("you win");
+		if(x+25<=bx+50 && x+25>=ax-50 && y<=ay+50 && win ==false){
+			win = true;
 			f=false;
+			JOptionPane.showMessageDialog(null, "you Win!", "Congratulations", JOptionPane.PLAIN_MESSAGE);
 		} 
 		
 		if(dead==false){
@@ -329,7 +347,9 @@ public class DetectObjects extends JPanel {
 		
 		
 		if(f==true){				// this is for going forward
-			int a =50;				// a can be changed, depending on how much you want the foward to increase
+		//	int a =50;				// a can be changed, depending on how much you want the foward to increase
+			
+			int a = distance;
 			while(m<a){
 				if(direction==0){
 				y-=1;
@@ -355,7 +375,7 @@ public class DetectObjects extends JPanel {
 			}
 		}
 		else if(f==false && b==true){  // this is for going backwards
-			int a =50;
+			int a = distance;
 			while(m<a){
 				if(direction==0){
 				y+=1;
