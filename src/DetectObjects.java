@@ -36,8 +36,8 @@ public class DetectObjects extends JPanel {
 	public int direction=0,t=1000;
 	public int x=30,y=420,x1=215,a=25,b1=10;
 	Random gen = new Random();
-	public int r1 =gen.nextInt(400),r2=gen.nextInt(400),r3=gen.nextInt(300),r4=gen.nextInt(300),twor1 =gen.nextInt(400),twor2=gen.nextInt(400),twor3=gen.nextInt(300),twor4=gen.nextInt(300),
-			threer1 =gen.nextInt(400),threer2=gen.nextInt(400),threer3=gen.nextInt(200),threer4=gen.nextInt(200);
+	/*public int r1 =gen.nextInt(400),r2=gen.nextInt(400),r3=gen.nextInt(300),r4=gen.nextInt(300),twor1 =gen.nextInt(400),twor2=gen.nextInt(400),twor3=gen.nextInt(300),twor4=gen.nextInt(300),
+			threer1 =gen.nextInt(400),threer2=gen.nextInt(400),threer3=gen.nextInt(200),threer4=gen.nextInt(200); */
 
 	public DetectObjects() throws IOException{
 		setSize(500,500);
@@ -52,24 +52,7 @@ public class DetectObjects extends JPanel {
 		setLayout(null);
 		get();
 		
-		refresh = new JButton("Refresh");
-		refresh.setBounds(400,400,100,50);
-		refresh.setVisible(true);
-		this.add(refresh);
-		refresh.addActionListener(
-		        new ActionListener() 
-		        {
-		           public void actionPerformed( ActionEvent event )
-		           
-		              {			
-								new HomeScreen();
-								
-							
-		           }
-		           
-		        } 
-
-		     ); 
+		
 		
 	}
 	
@@ -306,7 +289,7 @@ public class DetectObjects extends JPanel {
 			graphics.drawRect(x, y, 50, 50);	
 			}
 		break;
-		case 3: 
+		/*case 3: 
 			//System.out.println("Random Map");
 			graphics.setColor(Color.CYAN);
 			graphics.drawRect(x, y, 50, 50);
@@ -315,7 +298,7 @@ public class DetectObjects extends JPanel {
 			graphics.fillRect(r1, r2, r3, r4);
 			graphics.fillRect(twor1,twor2,twor3,twor4);
 			graphics.fillRect(threer1,threer2,threer3,threer4);
-		break;
+		break;*/
 		}
 		
 		repaint();
