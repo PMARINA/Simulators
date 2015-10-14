@@ -30,6 +30,7 @@ public class HomeScreen extends JFrame{
 		              {
 		           			try {
 							new Screen(0);
+							//new Code();
 								dispose();
 							} catch (IOException e) {
 								System.out.println("nerp");
@@ -51,6 +52,7 @@ public class HomeScreen extends JFrame{
 		              {
 		           			try {
 							new Screen(1);
+						//	new Code();
 								dispose();
 							} catch (IOException e) {
 								System.out.println("nerp");
@@ -73,6 +75,7 @@ public class HomeScreen extends JFrame{
 		              {
 		           			try {
 							new Screen(2);
+							//new Code();
 								dispose();
 							} catch (IOException e) {
 								System.out.println("nerp");

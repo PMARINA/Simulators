@@ -15,7 +15,10 @@ public class Main {
 		hi.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); */
 	HomeScreen hello = new HomeScreen();
 	hello.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+	
+	//Code hi = new Code();
+//	hi.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
 	//	Screen hi = new Screen();
 		//hi.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}

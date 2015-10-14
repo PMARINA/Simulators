@@ -44,34 +44,33 @@ public class DetectObjects extends JPanel {
 		setLayout(null);
 
 		get();
-		
-	/*	refresh = new JButton();
-		refresh.setBounds(50,50,50,50);
-		this.add(refresh);
-		refresh.addActionListener(
-		        new ActionListener() 
-		        {
-		           public void actionPerformed( ActionEvent event )
-		           
-		              {
-		           			
-							try {
-								get();
-							} catch (IOException e) {
-								
-							}
-		           }
-		           
-		        } 
-
-		     ); */
-
+	
 	}
 	public DetectObjects(int a) throws IOException{
 		obstacles=a;
 		setSize(500,500);
 		setLayout(null);
 		get();
+		
+		refresh = new JButton("Refresh");
+		refresh.setBounds(400,400,100,50);
+		refresh.setVisible(true);
+		this.add(refresh);
+		refresh.addActionListener(
+		        new ActionListener() 
+		        {
+		           public void actionPerformed( ActionEvent event )
+		           
+		              {			
+								new HomeScreen();
+								
+							
+		           }
+		           
+		        } 
+
+		     ); 
+		
 	}
 	
 	public void get() throws IOException{
