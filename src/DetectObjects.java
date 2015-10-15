@@ -104,7 +104,7 @@ public class DetectObjects extends JPanel {
 			   stuff--;
 		   }
 		   else{
-			   stuff--;							// when jibberish is entered, the spot in the array is saved for a useful peice of code
+			   stuff--;							// when jibberish is entered, the spot in the array is saved for something useful... 
 			   check();
 		   }
 		stuff++;								// next step 
@@ -288,22 +288,16 @@ public class DetectObjects extends JPanel {
 			graphics.setColor(Color.CYAN);
 			graphics.drawRect(x, y, 50, 50);	
 			}
-		break;
-		/*case 3: 
-			//System.out.println("Random Map");
-			graphics.setColor(Color.CYAN);
-			graphics.drawRect(x, y, 50, 50);
-			graphics.setColor(Color.black);
-			
-			graphics.fillRect(r1, r2, r3, r4);
-			graphics.fillRect(twor1,twor2,twor3,twor4);
-			graphics.fillRect(threer1,threer2,threer3,threer4);
-		break;*/
+			break;
+		case 3:
+			System.out.println("Random Maze");
+			break;
 		}
 		
 		repaint();
 		
-		if(x+25<=bx+50 && x+25>=ax-50 && y<=ay+50 && win ==false){
+		if(x<=bx+50 && x>=ax-50 && y<=ay+50 && win ==false){
+			repaint();
 			win = true;
 			f=false;
 			JOptionPane.showMessageDialog(null, "you Win!", "Congratulations", JOptionPane.PLAIN_MESSAGE);

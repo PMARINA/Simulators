@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 public class HomeScreen extends JFrame{
 	Container contentPane;
 	
-	public JButton play,medium,hard;
+	public JButton play,medium,hard,random;
 	public HomeScreen(){
 		contentPane = getContentPane();
 		
@@ -87,6 +87,25 @@ public class HomeScreen extends JFrame{
 
 		     ); 
 
+		random = new JButton("Random");
+		random.setBounds(300,300,100,100);
+		contentPane.add(random);
+		random.addActionListener(
+				new ActionListener(){
+					public void actionPerformed(ActionEvent even){
+						
+						try{
+							new Screen(3);
+							dispose();
+						}
+						catch(IOException e){
+							System.out.println("nope");
+						}
+						
+					}
+					
+			}
+				);
 		
 		setLayout(null);
 		setBackground(Color.GREEN);
