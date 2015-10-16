@@ -1,14 +1,6 @@
 forwards();
+forwards();
+forwards();
 turnright();
 forwards();
-forwards();
-forwards();
-forwards();
-forwards();
-turnleft();
-setSpeed(500);
-//setMoveDistance(350);
-forwards();
-//setMoveDistance(150);
-turnright();
 forwards();

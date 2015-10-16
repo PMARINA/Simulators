@@ -1,5 +1,5 @@
 //*************************************************************************//
-// Screen.java            Author: Marie Petitjean        			       //
+  // Screen.java            Author: Marie Petitjean        			       //
 // Insert certain commands into code.txt and the little robot square       //
 // will perform what is being asked:									   //
 //	forwards(); -To go forwards											   //
@@ -10,7 +10,7 @@
 //  turnleft(); -to turn left                                               //
 /// //   - to comment                                                       //
 //*************************************************************************//
-import java.awt.BasicStroke; 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -22,6 +22,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Random;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -36,29 +37,60 @@ public class DetectObjects extends JPanel {
 	public int direction=0,t=1000;
 	public int x=30,y=420,x1=215,a=25,b1=10;
 	Random gen = new Random();
-	/*public int r1 =gen.nextInt(400),r2=gen.nextInt(400),r3=gen.nextInt(300),r4=gen.nextInt(300),twor1 =gen.nextInt(400),twor2=gen.nextInt(400),twor3=gen.nextInt(300),twor4=gen.nextInt(300),
-			threer1 =gen.nextInt(400),threer2=gen.nextInt(400),threer3=gen.nextInt(200),threer4=gen.nextInt(200); */
-
+	public int r1 =gen.nextInt(400),r2=gen.nextInt(400),r3=gen.nextInt(300),r4=gen.nextInt(300),twor1 =gen.nextInt(400),twor2=gen.nextInt(400),twor3=gen.nextInt(300),twor4=gen.nextInt(300),
+			threer1 =gen.nextInt(400),threer2=gen.nextInt(400),threer3=gen.nextInt(200),threer4=gen.nextInt(200); 
+	ImageIcon Refresh = new ImageIcon("refresh.png");
+	
 	public DetectObjects() throws IOException{
 		setSize(500,500);
 		setLayout(null);
-
 		get();
 	
 	}
-	public DetectObjects(int a) throws IOException{
-		obstacles=a;
+	public DetectObjects(int b) throws IOException{
+		array = new int[40];				//makes an array of 10.... can be adjusted, depends on how many lines of code you want (it is ok if you have less lines than size of array)
+		arguments = new int[40];
+		
+		obstacles=b;
 		setSize(500,500);
 		setLayout(null);
-		get();
+		refresh = new JButton(Refresh);
+		refresh.setBounds(400,400,50,50);
+		this.add(refresh);
+		refresh.addActionListener(
+		        new ActionListener() 
+		        {
+		           public void actionPerformed( ActionEvent event ){			
+		        	   for(int i =0; i<array.length; i++){
+		        		   array[i]=0;
+		        		   arguments[i]=0;
+		        	   }
+		        	   stuff=0;
+		        	   direction=0;
+		        	   k=0;
+		        	   obstacles=0;
+		        	   x=30;
+		        	   y=420;
+		        	   x1=215;
+		        	   a=25;
+		        	   b1=10;
+								try {
+									get();
+								} catch (IOException e) {
+									
+								}
+							}
+		           
+		        } 
+
+		     ); 
+	//	get();
 		
 		
 		
 	}
 	
 	public void get() throws IOException{
-		array = new int[40];				//makes an array of 10.... can be adjusted, depends on how many lines of code you want (it is ok if you have less lines than size of array)
-		arguments = new int[40];
 		
 		
 		BufferedReader in = new BufferedReader(new FileReader("Code.txt")); //Reads text form test document
@@ -290,7 +322,9 @@ public class DetectObjects extends JPanel {
 			}
 			break;
 		case 3:
-			System.out.println("Random Maze");
+			graphics.fillRect(r1, r2, r3, r4);
+			graphics.setColor(Color.CYAN);
+			graphics.drawRect(x, y, 50, 50);
 			break;
 		}
 		

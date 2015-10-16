@@ -42,7 +42,6 @@ public class Screen extends JFrame {
 		        	   try {
 						new Screen(a);
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 								
