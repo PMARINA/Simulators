@@ -1,6 +1,5 @@
 forwards();
+backwards();
 forwards();
-forwards();
-turnright();
-forwards();
+stop();
 forwards();

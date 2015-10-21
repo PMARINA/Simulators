@@ -67,6 +67,7 @@ public class DetectObjects extends JPanel {
 		        	   }
 		        	   stuff=0;
 		        	   direction=0;
+		        	   distance= 50;        	   
 		        	   k=0;
 		        	   obstacles=0;
 		        	   x=30;
@@ -373,6 +374,7 @@ public class DetectObjects extends JPanel {
 				else if(direction==3||direction==-1){
 					x-=1;
 				}
+			System.out.println(m);
 			m++;
 			repaint();
 			}
