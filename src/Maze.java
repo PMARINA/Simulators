@@ -132,7 +132,9 @@ public class Maze {
     	mazeNotSolved = !(playerPos[0] == N/2.0 + 0.5 && playerPos[1] == N/2.0 + 0.5);
     	System.out.println(mazeNotSolved);
     }
-
+    private static void updatePlayerPos(){
+    	
+    }
     // a test client
     public static void main(String[] args) {
         int N = Integer.parseInt("10"); //THIS IS THE INPUT
@@ -140,6 +142,7 @@ public class Maze {
         StdDraw.show(0);
         boolean mazeNotSolved = true;
         while(mazeNotSolved){
+        	updatePlayerPos();
         	StdDraw.clear(StdDraw.WHITE);
         	maze.draw();
         	getMazeNotSolved();
