@@ -21,7 +21,7 @@ public class Maze {
     private boolean[][] south;
     private boolean[][] west;
     private boolean[][] visited;
-
+    private boolean done = false;
 
     public Maze(int N) {
         this.N = N;
@@ -100,60 +100,7 @@ public class Maze {
 
     // generate the maze starting from lower left
     private void generate() {
-        generate(1, 1);
-
-/*
-        // delete some random walls
-        for (int i = 0; i < N; i++) {
-            int x = 1 + StdRandom.uniform(N-1);
-            int y = 1 + StdRandom.uniform(N-1);
-            north[x][y] = south[x][y+1] = false;
-        }
-
-        // add some random walls
-        for (int i = 0; i < 10; i++) {
-            int x = N/2 + StdRandom.uniform(N/2);
-            int y = N/2 + StdRandom.uniform(N/2);
-            east[x][y] = west[x+1][y] = true;
-        }
-*/
-     
-    }
-
-
-
-    // solve the maze using depth-first search
-    private void solve(int x, int y) {
-        if (x == 0 || y == 0 || x == N+1 || y == N+1) return;
-        if (done || visited[x][y]) return;
-        visited[x][y] = true;
-
-        StdDraw.setPenColor(StdDraw.BLUE);
-        StdDraw.filledCircle(x + 0.5, y + 0.5, 0.25);
-        StdDraw.show(30);
-
-        // reached middle
-        if (x == N/2 && y == N/2) done = true;
-
-        if (!north[x][y]) solve(x, y + 1);
-        if (!east[x][y])  solve(x + 1, y);
-        if (!south[x][y]) solve(x, y - 1);
-        if (!west[x][y])  solve(x - 1, y);
-
-        if (done) return;
-
-        StdDraw.setPenColor(StdDraw.GRAY);
-        StdDraw.filledCircle(x + 0.5, y + 0.5, 0.25);
-        StdDraw.show(30);
-    }
-
-    // solve the maze starting from the start state
-    public void solve() {
-        for (int x = 1; x <= N; x++)
-            for (int y = 1; y <= N; y++)
-                visited[x][y] = false;
-        done = false;
-        solve(1, 1);
+        generate(1, 1);    
     }
 
     // draw the maze
@@ -178,11 +125,10 @@ public class Maze {
 
     // a test client
     public static void main(String[] args) {
-        int N = Integer.parseInt(args[0]);
+        int N = Integer.parseInt("10"); //THIS IS THE INPUT
         Maze maze = new Maze(N);
         StdDraw.show(0);
         maze.draw();
-        maze.solve();
     }
 
 }
