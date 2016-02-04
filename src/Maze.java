@@ -15,13 +15,15 @@
  ******************************************************************************/
 
 public class Maze {
-    private int N;                 // dimension of maze
+    private static int N;                 // dimension of maze
     private boolean[][] north;     // is there a wall to north of cell i, j
     private boolean[][] east;
     private boolean[][] south;
     private boolean[][] west;
     private boolean[][] visited;
     private boolean done = false;
+    private static boolean mazeNotSolved = true;
+    private static double[] playerPos = new double[2];
 
     public Maze(int N) {
         this.N = N;
@@ -42,9 +44,12 @@ public class Maze {
             visited[0][y] = true;
             visited[N+1][y] = true;
         }
+        playerPos[0] = 1.5;
+        playerPos[1] = 1.5;
+        System.out.println("Player position 0,1: " + playerPos[0] + "," + playerPos[1]);
 
 
-        // initialze all walls as present
+        // Initialize all walls as present
         north = new boolean[N+2][N+2];
         east  = new boolean[N+2][N+2];
         south = new boolean[N+2][N+2];
@@ -118,17 +123,28 @@ public class Maze {
                 if (east[x][y])  StdDraw.line(x + 1, y, x + 1, y + 1);
             }
         }
+        StdDraw.square(playerPos[0], playerPos[1], 0.375);
         StdDraw.show(1000);
     }
 
-
+    @SuppressWarnings("unused")
+	private static void getMazeNotSolved(){
+    	mazeNotSolved = !(playerPos[0] == N/2.0 + 0.5 && playerPos[1] == N/2.0 + 0.5);
+    	System.out.println(mazeNotSolved);
+    }
 
     // a test client
     public static void main(String[] args) {
         int N = Integer.parseInt("10"); //THIS IS THE INPUT
         Maze maze = new Maze(N);
         StdDraw.show(0);
-        maze.draw();
+        boolean mazeNotSolved = true;
+        while(mazeNotSolved){
+        	StdDraw.clear(StdDraw.WHITE);
+        	maze.draw();
+        	getMazeNotSolved();
+        }
+        
     }
 
 }
