@@ -26,7 +26,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
+import java.util.ArrayList;
 public class DetectObjects extends JPanel {	
 	public String line;		
 	public JButton refresh;

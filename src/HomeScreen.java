@@ -15,7 +15,8 @@ import javax.swing.JFrame;
 public class HomeScreen extends JFrame{
 	Container contentPane;
 	
-	public JButton play,medium,hard,random;
+	public JButton play,easy,medium,hard,random;
+	public JButton[] buttons = {play,medium,hard,random};
 	public HomeScreen(){
 		contentPane = getContentPane();
 		
@@ -32,7 +33,7 @@ public class HomeScreen extends JFrame{
 							new Screen(0);
 							//new Code();
 								dispose();
-							} catch (IOException e) {
+							} catch (IOException e) { 
 								System.out.println("nerp");
 							}
 		           			setVisible(false);
